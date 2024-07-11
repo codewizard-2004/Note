@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { IoCloseSharp } from "react-icons/io5";
 import Home from './Home';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import useCreate from '../hooks/useCreate';
 
 const CreateNote = ({title , note, id}) => {
+    const navigate = useNavigate();
     const [Title ,SetTitle ] = useState(title)
     const [Note , setNote] = useState(note)
 
@@ -14,6 +15,8 @@ const CreateNote = ({title , note, id}) => {
     const handleSubmit = async(e) =>{
         e.preventDefault()
         await createNote({userId , Title , Note});
+        navigate('/');
+
     }
   return (
     <>

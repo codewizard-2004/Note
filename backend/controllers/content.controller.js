@@ -34,15 +34,12 @@ export const removeItemfromUserContents = async(req , res) => {
         const updatedContents = user.contents.filter(id => id.toString()!==textId);
 
         user.contents = updatedContents;
-        await user.save();
 
         res.status(201).json({message:"text successfully removed",
             content: user.contents
         })
 
         const content_to_be_removed = await Content.findByIdAndDelete(textId)
-
-        await content_to_be_removed.save();
 
 
     } catch (error) {

@@ -44,7 +44,7 @@ const Notes = () => {
   return (
     <div className='w-full h-[1.5vh] flex flex-wrap p-10 gap-5 overflow-y-visible'>
       {messages.map((message , index) => (
-        <Note key={index} title={message.title} textarea={message.textarea} />
+        <Note key={index} textId={message._id} title={message.title} textarea={message.textarea} />
       ))}
       
     </div>
