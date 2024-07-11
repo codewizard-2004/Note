@@ -70,3 +70,17 @@ export const updateItemfromContents = async(req , res) => {
         
     }
 }
+
+
+export const getContentfromUser = async(req , res) => {
+    try {
+        const {id:userId} = req.params;
+        const user = await User.findById(userId).populate("contents");
+
+        res.status(200).json(user.contents);
+    } catch (error) {
+        console.log("Error in getContent for user",error);
+        res.status(500).json({message:"Internal Server Error"})
+        
+    }
+}

@@ -6,7 +6,6 @@ import useSignup from '../hooks/useSignup';
 
 const Signup = () => {
     const [passInfo , setpassInfo] = useState("")
-    const [password , setPassword] = useState('')
     const [passInfoColor , setpassInfoColor] = useState('text-red-600')
 
     const [inputs , setInputs] = useState({

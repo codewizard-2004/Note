@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 
     contents: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"contents",
+        ref:"Content",
         default: []
     }],
 

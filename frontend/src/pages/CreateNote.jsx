@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { IoCloseSharp } from "react-icons/io5";
 import Home from './Home';
 import { Link } from 'react-router-dom';
+import useCreate from '../hooks/useCreate';
 
 const CreateNote = ({title , note, id}) => {
     const [Title ,SetTitle ] = useState(title)
     const [Note , setNote] = useState(note)
-    const handleClose = (e) => {
-        console.log(5)
-        
+
+    const userId = JSON.parse(localStorage.getItem("note-user"))._id;
+
+    const {loading , createNote} = useCreate();
+    const handleSubmit = async(e) =>{
+        e.preventDefault()
+        await createNote({userId , Title , Note});
     }
   return (
     <>
@@ -19,7 +24,7 @@ const CreateNote = ({title , note, id}) => {
                 <h1><b>CREATE NOTE</b></h1>
             </div>
                 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='p-3'>
                     <input type="text" placeholder="Enter your Title" className="input input-bordered input-info w-full max-w-xs " value={!Title?'':Title}
                     onChange={(e)=>SetTitle(e.target.value)} />
@@ -29,11 +34,11 @@ const CreateNote = ({title , note, id}) => {
                     onChange={(e)=>setNote(e.target.value)} rows={10} ></textarea>
                 </div>
                 <div className='p-3'>
-                    <button className="btn btn-block btn-primary">Submit</button>
+                    <button className="btn btn-block btn-primary">{loading?<div className='loading loading-spinner'></div>:<h2>Submit</h2>}</button>
                 </div>
             </form>
             <Link to='/'>
-                <button className='absolute top-1 right-1' onClick={handleClose}><IoCloseSharp color='white' size={35}/></button>
+                <button className='absolute top-1 right-1' ><IoCloseSharp color='white' size={35}/></button>
             </Link>
             
       

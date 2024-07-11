@@ -15,8 +15,8 @@ function App() {
   
       <div className='p-0 mt-0 h-screen flex items-center justify-center overflow-hidden'>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={authUser?<Home/>:<Navigate to={"/login"}/>}/>
+          <Route path='/login' element={authUser?<Navigate to='/'/>:<Login/>}/>
           <Route path='/signup' element={authUser?<Navigate to='/'/>:<Signup/>}/>
           <Route path='/create' element={<CreateNote/>}/>
         </Routes>
