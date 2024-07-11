@@ -3,11 +3,12 @@ import Navigation from '../components/Navigation'
 import useBackground from '../hooks/useBackground'
 import NewTask from '../components/NewTask'
 import Notes from '../components/Notes'
-import CreateNote from '../components/CreateNote'
+import CreateNote from '../pages/CreateNote'
 
 
 const Home = () => {
     const {isDark , setIsDark} = useBackground()
+
   return (
     <div className={`p-0 mt-0 h-screen w-screen flex flex-col ${!isDark?'bg-slate-400':''} overflow-auto`}>
         <div className='fixed w-screen'>
@@ -21,7 +22,7 @@ const Home = () => {
               <Notes/>
               
         </div>
-        <CreateNote/>
+        {/* <CreateNote title="Hello" note={text}/> */}
         
 
 

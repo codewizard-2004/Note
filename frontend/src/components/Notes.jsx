@@ -1,6 +1,6 @@
 import React from 'react'
 import Note from './Note'
-import CreateNote from './CreateNote'
+import CreateNote from '../pages/CreateNote'
 
 const Notes = () => {
   return (

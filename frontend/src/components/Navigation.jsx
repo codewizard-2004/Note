@@ -1,9 +1,12 @@
 import React from 'react'
 import { IoIosLogOut } from "react-icons/io";
 import Theme from './Theme';
+import useLogout from '../hooks/useLogout';
 
 
 const Navigation = () => {
+
+  const {loading , logout} = useLogout()
 
     
   return (
@@ -19,7 +22,11 @@ const Navigation = () => {
       <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto text-white" />
     </div>
     <div className='pr-5'>
-        <button><IoIosLogOut size={30} color='white'/></button>
+      {!loading?(
+        <IoIosLogOut size={30} color='white' onClick={logout}/>):(
+          <span className='loading loading-spinner'></span>
+        )
+      }
     </div>
   </div>
 </div>
