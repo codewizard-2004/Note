@@ -11,7 +11,7 @@ const generateTokenAndSetCookie = (userId , res)=> {
         maxAge: 15*24*60*60*1000, //ms
         httpOnly: true, //prevent xss attacks
         sameSite: "strict" ,//csrf attacks cross-site request forgery attacks
-        secure:"development"
+        secure:"production"
     })
 }
 
